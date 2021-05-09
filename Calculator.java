@@ -1,3 +1,4 @@
+
 import java.util.function.*;
 
 
@@ -10,7 +11,8 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    BinaryOperator<Integer> devide = (x, y) -> y == 0 ? 0 : (x / y);
+    BinaryOperator<Integer> devide = (x, y) -> y == 0 ? 0 : (x / y); //Добавил проверку на делитель, если он равен нулю
+    // возвращается ноль
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
 
@@ -20,7 +22,7 @@ public class Calculator {
         Calculator calc = Calculator.instance.get();
         int a = calc.plus.apply(2, 1);
         int b = calc.minus.apply(4,1);
-        int c = calc.devide.apply(a, b);
+        int c = calc.devide.apply(a, b); //Возникала ошибка деления на ноль
         calc.println.accept(c);
     }
 }
